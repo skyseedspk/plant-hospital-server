@@ -14,7 +14,6 @@ def predict():
 
         file = request.files['file']
 
-        # Dummy response (abhi AI nahi laga)
         result = {
             "plant": "Unknown Plant",
             "disease": "Healthy",
