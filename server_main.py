@@ -4,12 +4,14 @@ import io
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({
         "success": True,
         "message": "Plant Hospital API is running"
     })
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -32,8 +34,6 @@ def predict():
         image = Image.open(io.BytesIO(image_bytes))
         image.verify()
 
-        # ابھی dummy result دے رہا ہوں تاکہ app side test ہو جائے
-        # بعد میں یہاں اصل AI model لگے گا
         return jsonify({
             "success": True,
             "plant": "Detected plant image",
@@ -48,6 +48,7 @@ def predict():
             "success": False,
             "error": str(e)
         }), 500
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
